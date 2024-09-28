@@ -7,7 +7,7 @@ In a blind trial platform, different entities are involved to ensure data manage
 # Entities/Models
 Let's break down the key entities that would be necessary for this application. These entities can be designed to work with a relational database like SQL Server.
 
-User (common for administrators, doctors, and patients)
+**User (common for administrators, doctors, and patients)**
 Fields:
 id (Long)
 name (String)
@@ -18,7 +18,8 @@ createdAt (Timestamp)
 Relations:
 One User can be a doctor, patient, or administrator depending on the role.
 Doctors create and manage trials, and patients participate in them.
-Trial (Represents the drug trial)
+
+**Trial (Represents the drug trial)**
 Fields:
 id (Long)
 name (String)
@@ -29,7 +30,8 @@ createdBy (Reference to the User, usually a Doctor)
 Relations:
 A Trial is created and managed by a Doctor (User entity with the role DOCTOR).
 A Trial can have multiple patients.
-Drug (Represents the drugs used in the trial)
+
+**Drug (Represents the drugs used in the trial)**
 Fields:
 id (Long)
 name (String)
@@ -38,7 +40,8 @@ blindCode (String, a code given to anonymize the drug during the trial)
 trialId (Reference to the Trial)
 Relations:
 Each Drug is tied to a specific Trial.
-Patient (Represents a patient participating in the trial)
+
+**Patient (Represents a patient participating in the trial)**
 Fields:
 id (Long)
 userId (Reference to the User table, the role will be PATIENT)
@@ -47,7 +50,8 @@ assignedDrugId (Reference to the Drug, with anonymized details for the blind tri
 assignedAt (Date when the drug was assigned)
 Relations:
 A Patient is linked to a Trial and assigned to a Drug.
-Result (Represents the outcomes of a trial for a patient)
+
+**Result (Represents the outcomes of a trial for a patient)**
 Fields:
 id (Long)
 trialId (Reference to the Trial)
@@ -56,7 +60,8 @@ resultDescription (String, anonymized report)
 createdAt (Timestamp)
 Relations:
 Each Result is tied to a Patient and a Trial.
-Feedback (Optional but useful for recording patient feedback)
+
+**Feedback (Optional but useful for recording patient feedback)**
 Fields:
 id (Long)
 patientId (Reference to the Patient)
