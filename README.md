@@ -66,4 +66,9 @@ createdAt (Timestamp)
 Relations:
 Feedback can be tied to both the Patient and the Trial.
 
-
+# Relationships Overview:
+A User can have different roles (Admin, Doctor, Patient).
+A Doctor (User) can manage multiple Trials.
+A Trial can have multiple Patients, and each patient is assigned a Drug.
+Each Patient in a Trial can submit Feedback and have Results.
+Results are submitted anonymously during the blind trial.
